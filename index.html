@@ -253,16 +253,8 @@
         .hero-photo .d-circ{right:-4%;top:2%;width:13%}
         .hero-photo .d-tri{left:2%;bottom:2%;width:13%}
         .hero-photo .d-plus{right:-2%;bottom:12%;width:8%}
-        .impact-card{position:relative;z-index:4;margin:18px 0 0 auto;max-width:330px;background:rgba(17,24,39,.92);backdrop-filter:blur(8px)}
-        @media (max-width:991px){.hero-photo{max-width:340px}.hero-photo .d-zig{left:-4%}.impact-card{margin:18px auto 0}}
+        @media (max-width:991px){.hero-photo{max-width:340px}.hero-photo .d-zig{left:-4%}}
 
-        /* Quote band */
-        .quote-band{padding:80px 0;text-align:center;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);
-            background-color:#0d1322;background-image:linear-gradient(rgba(14,165,233,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,.07) 1px,transparent 1px);background-size:40px 40px}
-        .quote-band blockquote{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin:0 auto;max-width:18ch}
-        .quote-band .qmark{font-size:4rem;line-height:1;font-weight:800}
-        .quote-band cite{display:block;margin-top:1.2rem;font-style:normal;color:var(--text-muted)}
-        .quote-band p{margin:1rem auto 0;max-width:46ch;color:var(--text-main);opacity:.85;font-size:.95rem}
 
 
         /* Project card images */
@@ -358,45 +350,10 @@
                         <svg class="deco d-tri" viewBox="0 0 70 80" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M6 4 L62 34 L6 60 Z"/><path d="M14 30 L64 52 L14 76 Z" stroke-opacity=".6"/></g></svg>
                         <svg class="deco d-plus" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4V36M4 20H36" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
                     </div>
-                    <div class="glass-card impact-card p-4 text-start">
-                        <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="rounded-circle p-3 bg-primary bg-opacity-10 text-primary fs-3">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-0 fw-bold">Data Impact</h5>
-                                <small class="text-subtle">National Scale Education Policy</small>
-                            </div>
-                        </div>
-                        <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span class="text-subtle"><i class="fa-solid fa-school text-info me-2"></i>Schools Covered</span>
-                                <span class="fw-bold">12,000+</span>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span class="text-subtle"><i class="fa-solid fa-diagram-project text-warning me-2"></i>Key Projects</span>
-                                <span class="fw-bold">7 Case Studies</span>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <span class="text-subtle"><i class="fa-solid fa-book-bookmark text-success me-2"></i>Publications</span>
-                                <span class="fw-bold">3 Papers</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- QUOTE -->
-    <div class="quote-band">
-        <div class="container">
-            <div class="qmark gradient-text">&ldquo;</div>
-            <blockquote>Above all else <span class="gradient-text">show the data.</span></blockquote>
-            <cite>Edward R. Tufte, <em>The Visual Display of Quantitative Information</em> (1983)</cite>
-            <p>This is how I build every dashboard: clear numbers first, decoration last.</p>
-        </div>
-    </div>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="py-5">
@@ -406,13 +363,13 @@
                 <div class="col-12">
                     <div class="glass-card h-100" id="aboutText">
                         <p class="fs-6 text-subtle mb-3">
-                            I am a data analyst with a background in mathematics education and applied statistics. Since 2019, I have worked at the <strong>Ministry of Primary and Secondary Education of Indonesia (Kemendikdasmen)</strong>, managing large-scale education databases, building ETL pipelines, and designing interactive dashboards that track national programmes across provinces, school levels, and individual schools.
+                            I am a data analyst with a background in mathematics education and applied statistics. Since 2019, I have worked at the <strong>Ministry of Primary and Secondary Education of Indonesia (Kemendikdasmen)</strong>, managing large-scale education databases, building ETL pipelines, and designing interactive dashboards that track national programs across provinces, school levels, and individual schools.
                         </p>
                         <p class="fs-6 text-subtle mb-3">
-                            My work sits right at the intersection between data engineering, statistical rigor, and public policy. On typical projects, I collaborate with programme owners to define key indicators, consolidate data from fragmented systems, build reproducible pipelines, and deliver intuitive visual analytics.
+                            My work sits right at the intersection between data engineering, statistical rigor, and public policy. On typical projects, I collaborate with program owners to define key indicators, consolidate data from fragmented systems, build reproducible pipelines, and deliver intuitive visual analytics.
                         </p>
                         <p class="fs-6 text-subtle mb-0">
-                            Beyond monitoring dashboards, I leverage statistical modeling (regression, structural equation approaches, time-series forecasting) to evaluate programme outcomes. My research on school accreditation and national assessment results is published in peer-reviewed journals.
+                            Beyond monitoring dashboards, I leverage statistical modeling (regression, structural equation approaches, time-series forecasting) to evaluate program outcomes. My research on school accreditation and national assessment results is published in peer-reviewed journals.
                         </p>
                     </div>
                 </div>
@@ -482,9 +439,9 @@
                                 <span class="project-tag">Data Product · Dashboard</span>
                                 <small class="text-subtle">2026</small>
                             </div>
-                            <h5 class="fw-bold text-white mb-2">National Education Priority Programme Dashboard</h5>
+                            <h5 class="fw-bold text-white mb-2">National Education Priority Program Dashboard</h5>
                             <p class="text-subtle small mb-3">
-                                A centralized leadership dashboard tracking priority educational programmes across all provinces with consistent indicator definitions.
+                                A centralized leadership dashboard tracking priority educational programs across all provinces with consistent indicator definitions.
                             </p>
                             <div class="d-flex flex-wrap gap-1 mb-3">
                                 <span class="badge bg-dark border border-secondary text-light">R Shiny</span>
@@ -530,7 +487,7 @@
                                 <span class="project-tag">Data Product · Web App</span>
                                 <small class="text-subtle">2026</small>
                             </div>
-                            <h5 class="fw-bold text-white mb-2">School Programme Monitoring Web App (Logbook)</h5>
+                            <h5 class="fw-bold text-white mb-2">School Program Monitoring Web App (Logbook)</h5>
                             <p class="text-subtle small mb-3">
                                 Consolidated 17 separate spreadsheets into a single real-time operational logbook web app for daily school monitoring.
                             </p>
@@ -577,7 +534,7 @@
                                 <span class="project-tag">Predictive Analytics</span>
                                 <small class="text-subtle">2019–Present</small>
                             </div>
-                            <h5 class="fw-bold text-white mb-2">Programme Evaluation & Predictive Modelling</h5>
+                            <h5 class="fw-bold text-white mb-2">Program Evaluation & Predictive Modeling</h5>
                             <p class="text-subtle small mb-3">
                                 Applied regression modeling and time-series forecasting to evaluate educational program effectiveness for policy formulation.
                             </p>
@@ -863,7 +820,7 @@
             <div class="glass-card text-center p-5">
                 <h2 class="fw-bold text-white mb-3">Let's Connect & Collaborate</h2>
                 <p class="text-subtle mb-4 max-w-xl mx-auto">
-                    Open to collaboration on education data products, interactive dashboard development, and statistical programme evaluation.
+                    Open to collaboration on education data products, interactive dashboard development, and statistical program evaluation.
                 </p>
                 
                 <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
@@ -894,7 +851,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">National Education Priority Programme Dashboard</h5>
+                    <h5 class="modal-title fw-bold">National Education Priority Program Dashboard</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-subtle">
@@ -943,7 +900,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">School Programme Monitoring Web App (Logbook)</h5>
+                    <h5 class="modal-title fw-bold">School Program Monitoring Web App (Logbook)</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-subtle">
@@ -991,7 +948,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold">Programme Evaluation & Predictive Modelling</h5>
+                    <h5 class="modal-title fw-bold">Program Evaluation & Predictive Modeling</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-subtle">
