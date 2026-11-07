@@ -239,14 +239,22 @@
         .hero-section .container{position:relative;z-index:1}
         .fw-extrabold{font-weight:800}
 
-        /* Hero photo */
-        .hero-photo{position:relative;max-width:400px;margin:0 auto}
-        .hero-photo::before{content:'';position:absolute;left:6%;right:6%;bottom:0;top:14%;border-radius:220px 220px 16px 16px;
-            background:var(--accent-gradient);opacity:.95}
-        .hero-photo::after{content:'';position:absolute;left:6%;right:6%;bottom:0;top:14%;border-radius:220px 220px 16px 16px;
-            background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px);background-size:16px 16px}
-        .hero-photo img{position:relative;z-index:1;width:100%;height:auto;display:block}
-        .impact-card{position:relative;z-index:2;margin:-70px 0 0 auto;max-width:330px;background:rgba(17,24,39,.92);backdrop-filter:blur(8px)}
+        /* Hero photo: tilted panel, head pops out of the top */
+        .hero-photo{position:relative;width:100%;max-width:460px;aspect-ratio:5/6;margin:0 auto}
+        .hero-photo .frame{position:absolute;left:14.00%;top:32.00%;width:72.00%;height:60.00%;
+            border:2px solid rgba(255,255,255,.75);border-radius:30px;transform:rotate(-30deg)}
+        .hero-photo .panel{position:absolute;left:19.40%;top:37.83%;width:66.00%;height:55.00%;border-radius:30px;transform:rotate(-20deg);
+            background:linear-gradient(135deg,#1e3a8a 0%,#4f46e5 100%);overflow:hidden;box-shadow:0 30px 60px -20px rgba(79,70,229,.5)}
+        .hero-photo .panel svg{position:absolute;inset:0;width:100%;height:100%}
+        .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center top;z-index:2;
+            clip-path:polygon(0.00% 0.00%, 100.00% 0.00%, 100.00% 31.58%, 71.29% 31.58%, 92.90% 81.07%, 33.51% 99.09%, 11.90% 49.59%, 0.00% 49.59%)}
+        .hero-photo .deco{position:absolute;z-index:3;pointer-events:none}
+        .hero-photo .d-zig{left:-14%;top:10%;width:22%}
+        .hero-photo .d-circ{right:-4%;top:2%;width:13%}
+        .hero-photo .d-tri{left:2%;bottom:2%;width:13%}
+        .hero-photo .d-plus{right:-2%;bottom:12%;width:8%}
+        .impact-card{position:relative;z-index:4;margin:18px 0 0 auto;max-width:330px;background:rgba(17,24,39,.92);backdrop-filter:blur(8px)}
+        @media (max-width:991px){.hero-photo{max-width:340px}.hero-photo .d-zig{left:-4%}.impact-card{margin:18px auto 0}}
 
         /* Quote band */
         .quote-band{padding:80px 0;text-align:center;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);
@@ -256,12 +264,6 @@
         .quote-band cite{display:block;margin-top:1.2rem;font-style:normal;color:var(--text-muted)}
         .quote-band p{margin:1rem auto 0;max-width:46ch;color:var(--text-main);opacity:.85;font-size:.95rem}
 
-        /* About photo */
-        .about-photo{border-radius:12px;overflow:hidden;border:1px solid var(--border-color);position:relative;height:100%}
-        .about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:420px}
-        .about-photo .tag{position:absolute;left:16px;bottom:16px;background:rgba(11,15,25,.85);backdrop-filter:blur(6px);border:1px solid var(--border-color);
-            border-radius:10px;padding:10px 14px}
-        .about-photo .tag b{font-size:1.6rem;line-height:1}
 
         /* Project card images */
         .project-thumb{margin:-2rem -2rem 1.25rem;height:180px;border-radius:12px 12px 0 0;overflow:hidden;position:relative;
@@ -343,7 +345,18 @@
                 </div>
                 <div class="col-lg-5 text-center">
                     <div class="hero-photo">
+                        <div class="frame" aria-hidden="true"></div>
+                        <div class="panel" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-opacity=".28" stroke-width=".6">
+                                <polyline points="0,72 12,66 24,70 36,58 48,62 60,48 72,52 84,38 100,30"/>
+                                <polyline points="0,84 14,80 28,82 42,74 56,76 70,66 84,68 100,58"/>
+                                <polyline points="0,60 10,56 22,60 34,46 46,50 58,36 70,40 82,26 100,20"/></g></svg>
+                        </div>
                         <img src="photo-hero.webp" alt="Portrait of Iswan Achlan Setiawan" width="750" height="900">
+                        <svg class="deco d-zig" viewBox="0 0 120 40" aria-hidden="true"><polyline points="4,8 22,30 40,14 58,32 76,12 94,30 116,16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <svg class="deco d-circ" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="3"><circle cx="24" cy="22" r="16"/><circle cx="36" cy="36" r="16"/></g></svg>
+                        <svg class="deco d-tri" viewBox="0 0 70 80" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"><path d="M6 4 L62 34 L6 60 Z"/><path d="M14 30 L64 52 L14 76 Z" stroke-opacity=".6"/></g></svg>
+                        <svg class="deco d-plus" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4V36M4 20H36" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
                     </div>
                     <div class="glass-card impact-card p-4 text-start">
                         <div class="d-flex align-items-center gap-3 mb-4">
@@ -390,13 +403,7 @@
         <div class="container py-4">
             <h2 class="section-title h3">About Me</h2>
             <div class="row gy-4">
-                <div class="col-lg-4 col-md-5">
-                    <div class="about-photo">
-                        <img src="photo-about.jpg" alt="Iswan Achlan Setiawan" width="560" height="700" loading="lazy">
-                        <div class="tag"><b class="gradient-text">5+</b> <small class="text-subtle ms-1">years in education data</small></div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7">
+                <div class="col-12">
                     <div class="glass-card h-100" id="aboutText">
                         <p class="fs-6 text-subtle mb-3">
                             I am a data analyst with a background in mathematics education and applied statistics. Since 2019, I have worked at the <strong>Ministry of Primary and Secondary Education of Indonesia (Kemendikdasmen)</strong>, managing large-scale education databases, building ETL pipelines, and designing interactive dashboards that track national programmes across provinces, school levels, and individual schools.
