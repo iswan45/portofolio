@@ -24,6 +24,30 @@
   function q(table) { return db.from(table).select('*').order('sort_order', { ascending: true }).order('id', { ascending: true }); }
 
   var projects = [];
+  var TXT = {};
+  function T(key, fallback) { return (TXT[key] != null && TXT[key] !== '') ? TXT[key] : fallback; }
+
+  function applySiteText(rows) {
+    rows.forEach(function (r) { TXT[r.key] = r.value; });
+    document.querySelectorAll('[data-text]').forEach(function (el) {
+      var v = TXT[el.getAttribute('data-text')];
+      if (v != null && v !== '') el.innerHTML = inline(v);
+    });
+    if (TXT.page_title) document.title = TXT.page_title;
+    var chips = lines(TXT.hero_chips);
+    if (chips.length) set('heroChips', chips.map(function (line) {
+      var p = line.split('|'), icon = p.length > 1 ? p[0].trim() : '', text = (p.length > 1 ? p.slice(1).join('|') : p[0]).trim();
+      return '<span class="skill-badge">' + (icon ? '<i class="' + esc(icon) + '"></i> ' : '') + esc(text) + '</span>';
+    }).join(''));
+    var mail = document.getElementById('contactEmail');
+    if (mail && TXT.contact_email) mail.setAttribute('href', 'mailto:' + TXT.contact_email.trim());
+    document.querySelectorAll('[data-link]').forEach(function (a) {
+      var k = a.getAttribute('data-link');
+      if (!(k in TXT)) return;
+      var u = safeUrl((TXT[k] || '').trim());
+      if (u) { a.setAttribute('href', u); a.style.display = ''; } else a.style.display = 'none';
+    });
+  }
 
   function renderAbout(row) {
     if (!row || !row.about) return;
@@ -56,7 +80,7 @@
         '<h5 class="fw-bold text-white mb-2">' + esc(p.title) + '</h5>' +
         '<p class="text-subtle small mb-3">' + inline(p.description) + '</p>' +
         '<div class="d-flex flex-wrap gap-1 mb-3">' + chips + '</div></div>' +
-        '<button class="btn btn-outline-custom w-100 text-sm mt-3" data-project="' + i + '">Read Case Study <i class="fa-solid fa-arrow-right ms-1"></i></button>' +
+        '<button class="btn btn-outline-custom w-100 text-sm mt-3" data-project="' + i + '">' + esc(T('project_button', 'Read Case Study')) + ' <i class="fa-solid fa-arrow-right ms-1"></i></button>' +
         '</div></div>';
     }).join(''));
     // reset filter buttons to "All"
@@ -72,9 +96,9 @@
     document.getElementById('pmTitle').textContent = p.title;
     document.getElementById('pmBody').innerHTML =
       (img ? '<img class="modal-hero" src="' + esc(img) + '" alt="' + esc(p.title) + '">' : '') +
-      (p.problem ? '<h6 class="text-white fw-bold">The Problem</h6><p>' + inline(p.problem) + '</p>' : '') +
-      (lines(p.what_i_did).length ? '<h6 class="text-white fw-bold">What I Did</h6><ul>' + lines(p.what_i_did).map(function (x) { return '<li>' + inline(x) + '</li>'; }).join('') + '</ul>' : '') +
-      (p.tech_stack ? '<h6 class="text-white fw-bold">Tech Stack</h6><p class="mb-0">' + list(p.tech_stack).map(esc).join(' · ') + '</p>' : '');
+      (p.problem ? '<h6 class="text-white fw-bold">' + esc(T('modal_problem', 'The Problem')) + '</h6><p>' + inline(p.problem) + '</p>' : '') +
+      (lines(p.what_i_did).length ? '<h6 class="text-white fw-bold">' + esc(T('modal_what', 'What I Did')) + '</h6><ul>' + lines(p.what_i_did).map(function (x) { return '<li>' + inline(x) + '</li>'; }).join('') + '</ul>' : '') +
+      (p.tech_stack ? '<h6 class="text-white fw-bold">' + esc(T('modal_stack', 'Tech Stack')) + '</h6><p class="mb-0">' + list(p.tech_stack).map(esc).join(' · ') + '</p>' : '');
     bootstrap.Modal.getOrCreateInstance(document.getElementById('projectModal')).show();
   });
 
@@ -128,8 +152,10 @@
 
   Promise.all([
     db.from('profile').select('*').eq('id', 1).maybeSingle(),
-    q('focus_items'), q('projects'), q('skill_groups'), q('timeline'), q('publications')
+    q('focus_items'), q('projects'), q('skill_groups'), q('timeline'), q('publications'),
+    db.from('site_text').select('key,value')
   ]).then(function (res) {
+    if (!res[6].error) applySiteText(res[6].data || []);
     var failed = res.filter(function (r) { return r.error; });
     if (failed.length) { console.warn('Some content could not be loaded', failed.map(function (r) { return r.error.message; })); }
     if (!res[0].error) renderAbout(res[0].data);

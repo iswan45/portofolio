@@ -274,20 +274,20 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom navbar-dark">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4" href="#">
-                <span>Iswan Achlan Setiawan</span>
+                <span data-text="brand_name">Iswan Achlan Setiawan</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience & Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home" data-text="nav_home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-text="nav_about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects" data-text="nav_projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills" data-text="nav_skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience" data-text="nav_experience">Experience & Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications" data-text="nav_publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-text="nav_contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -306,19 +306,19 @@
             <div class="row align-items-center gy-5">
                 <div class="col-lg-7">
                     <div class="hero-badge mb-3">
-                        <i class="fa-solid fa-circle-dot fa-beat-fade"></i> Available for Policy & Data Analytics Projects
+                        <i class="fa-solid fa-circle-dot fa-beat-fade"></i> <span data-text="hero_badge">Available for Policy & Data Analytics Projects</span>
                     </div>
                     <h1 class="display-4 fw-extrabold mb-3">
-                        Hi, I'm <span class="gradient-text">Iswan Achlan Setiawan</span>
+                        <span data-text="hero_greeting">Hi, I'm</span> <span class="gradient-text" data-text="hero_name">Iswan Achlan Setiawan</span>
                     </h1>
-                    <h2 class="h3 text-subtle mb-4">
+                    <h2 class="h3 text-subtle mb-4" data-text="hero_title">
                         Data Analyst in Education Policy
                     </h2>
-                    <p class="fs-5 text-subtle mb-4 leading-relaxed max-w-2xl">
+                    <p class="fs-5 text-subtle mb-4 leading-relaxed max-w-2xl" data-text="hero_intro">
                         I turn national school data into dashboards and statistical analysis that decision-makers actually use to shape education policy across Indonesia.
                     </p>
                     
-                    <div class="d-flex flex-wrap gap-2 mb-4">
+                    <div class="d-flex flex-wrap gap-2 mb-4" id="heroChips">
                         <span class="skill-badge"><i class="fa-solid fa-building-columns text-info"></i> 5+ Years at Ministry of Primary & Secondary Education</span>
                         <span class="skill-badge"><i class="fa-solid fa-graduation-cap text-warning"></i> Master's in Applied Stats (IPB)</span>
                         <span class="skill-badge"><i class="fa-brands fa-python text-primary"></i> Python</span>
@@ -328,10 +328,10 @@
 
                     <div class="d-flex flex-wrap gap-3 pt-2">
                         <a href="#projects" class="btn btn-accent">
-                            <i class="fa-solid fa-folder-open me-2"></i>View Projects
+                            <i class="fa-solid fa-folder-open me-2"></i><span data-text="hero_btn_projects">View Projects</span>
                         </a>
                         <a href="#contact" class="btn btn-outline-custom">
-                            <i class="fa-solid fa-paper-plane me-2"></i>Contact Me
+                            <i class="fa-solid fa-paper-plane me-2"></i><span data-text="hero_btn_contact">Contact Me</span>
                         </a>
                     </div>
                 </div>
@@ -358,7 +358,7 @@
     <!-- ABOUT SECTION -->
     <section id="about" class="py-5">
         <div class="container py-4">
-            <h2 class="section-title h3">About Me</h2>
+            <h2 class="section-title h3" data-text="about_title">About Me</h2>
             <div class="row gy-4">
                 <div class="col-12">
                     <div class="glass-card h-100" id="aboutText">
@@ -375,7 +375,7 @@
                 </div>
                 <div class="col-12">
                     <div class="glass-card h-100">
-                        <h4 class="h5 mb-4 fw-bold text-white"><i class="fa-solid fa-bullseye text-info me-2"></i>What I Focus On</h4>
+                        <h4 class="h5 mb-4 fw-bold text-white"><i class="fa-solid fa-bullseye text-info me-2"></i><span data-text="focus_title">What I Focus On</span></h4>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="focusList">
                             <div class="col"><div class="d-flex align-items-start gap-3">
                                 <i class="fa-solid fa-chart-pie text-primary fs-5 mt-1"></i>
@@ -417,15 +417,15 @@
         <div class="container py-4">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
                 <div>
-                    <h2 class="section-title h3 mb-0">Featured Projects</h2>
-                    <p class="text-subtle mt-2 mb-0">Selected case studies in education data products, analytics, & policy research.</p>
+                    <h2 class="section-title h3 mb-0" data-text="projects_title">Featured Projects</h2>
+                    <p class="text-subtle mt-2 mb-0" data-text="projects_subtitle">Selected case studies in education data products, analytics, & policy research.</p>
                 </div>
                 <!-- Filter Buttons -->
                 <div class="d-flex flex-wrap gap-2">
-                    <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
-                    <button class="filter-btn" onclick="filterProjects('data-product', this)">Data Products</button>
-                    <button class="filter-btn" onclick="filterProjects('analysis', this)">Research & Stats</button>
-                    <button class="filter-btn" onclick="filterProjects('governance', this)">Governance</button>
+                    <button class="filter-btn active" onclick="filterProjects('all', this)" data-text="filter_all">All</button>
+                    <button class="filter-btn" onclick="filterProjects('data-product', this)" data-text="filter_data_product">Data Products</button>
+                    <button class="filter-btn" onclick="filterProjects('analysis', this)" data-text="filter_analysis">Research & Stats</button>
+                    <button class="filter-btn" onclick="filterProjects('governance', this)" data-text="filter_governance">Governance</button>
                 </div>
             </div>
 
@@ -601,7 +601,7 @@
     <!-- SKILLS SECTION -->
     <section id="skills" class="py-5 bg-black bg-opacity-25">
         <div class="container py-4">
-            <h2 class="section-title h3">Technical & Analytical Skills</h2>
+            <h2 class="section-title h3" data-text="skills_title">Technical & Analytical Skills</h2>
             <div class="row gy-4" id="skillsList">
                 
                 <div class="col-md-6 col-lg-4">
@@ -680,12 +680,12 @@
     <!-- EXPERIENCE & EDUCATION SECTION -->
     <section id="experience" class="py-5">
         <div class="container py-4">
-            <h2 class="section-title h3">Experience & Education</h2>
+            <h2 class="section-title h3" data-text="experience_title">Experience & Education</h2>
             <div class="row gy-5">
                 
                 <!-- Work Experience -->
                 <div class="col-lg-6">
-                    <h4 class="h5 fw-bold text-white mb-4"><i class="fa-solid fa-briefcase text-info me-2"></i>Work History</h4>
+                    <h4 class="h5 fw-bold text-white mb-4"><i class="fa-solid fa-briefcase text-info me-2"></i><span data-text="work_title">Work History</span></h4>
                     <div class="timeline" id="workList">
                         
                         <div class="timeline-item">
@@ -724,7 +724,7 @@
 
                 <!-- Education -->
                 <div class="col-lg-6">
-                    <h4 class="h5 fw-bold text-white mb-4"><i class="fa-solid fa-graduation-cap text-warning me-2"></i>Education</h4>
+                    <h4 class="h5 fw-bold text-white mb-4"><i class="fa-solid fa-graduation-cap text-warning me-2"></i><span data-text="education_title">Education</span></h4>
                     <div class="timeline" id="eduList">
                         
                         <div class="timeline-item">
@@ -755,12 +755,12 @@
     <!-- PUBLICATIONS & RECOGNITION -->
     <section id="publications" class="py-5 bg-black bg-opacity-25">
         <div class="container py-4">
-            <h2 class="section-title h3">Publications & Recognitions</h2>
+            <h2 class="section-title h3" data-text="publications_title">Publications & Recognitions</h2>
             <div class="row gy-4">
                 
                 <div class="col-lg-7">
                     <div class="glass-card h-100">
-                        <h5 class="fw-bold text-white mb-4"><i class="fa-solid fa-book-open text-primary me-2"></i>Peer-Reviewed Publications</h5>
+                        <h5 class="fw-bold text-white mb-4"><i class="fa-solid fa-book-open text-primary me-2"></i><span data-text="pubs_subtitle">Peer-Reviewed Publications</span></h5>
                         <div class="d-flex flex-column gap-3" id="pubList">
                             <div class="p-3 rounded bg-dark border border-secondary border-opacity-25">
                                 <span class="badge bg-primary bg-opacity-25 text-info mb-1">2022</span>
@@ -783,7 +783,7 @@
 
                 <div class="col-lg-5">
                     <div class="glass-card h-100">
-                        <h5 class="fw-bold text-white mb-4"><i class="fa-solid fa-award text-warning me-2"></i>Certifications & Honors</h5>
+                        <h5 class="fw-bold text-white mb-4"><i class="fa-solid fa-award text-warning me-2"></i><span data-text="recognitions_subtitle">Certifications & Honors</span></h5>
                         <ul class="list-unstyled d-flex flex-column gap-3 mb-0" id="recList">
                             <li class="d-flex gap-3 align-items-start">
                                 <i class="fa-solid fa-trophy text-warning fs-5 mt-1"></i>
@@ -818,21 +818,21 @@
     <section id="contact" class="py-5">
         <div class="container py-4">
             <div class="glass-card text-center p-5">
-                <h2 class="fw-bold text-white mb-3">Let's Connect & Collaborate</h2>
-                <p class="text-subtle mb-4 max-w-xl mx-auto">
+                <h2 class="fw-bold text-white mb-3" data-text="contact_title">Let's Connect & Collaborate</h2>
+                <p class="text-subtle mb-4 max-w-xl mx-auto" data-text="contact_text">
                     Open to collaboration on education data products, interactive dashboard development, and statistical program evaluation.
                 </p>
                 
                 <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
-                    <a href="mailto:iswan.achlan@gmail.com" class="btn btn-accent btn-lg fs-6">
-                        <i class="fa-solid fa-envelope me-2"></i>iswan.achlan@gmail.com
+                    <a href="mailto:iswan.achlan@gmail.com" class="btn btn-accent btn-lg fs-6" id="contactEmail">
+                        <i class="fa-solid fa-envelope me-2"></i><span data-text="contact_email">iswan.achlan@gmail.com</span>
                     </a>
                 </div>
 
                 <div class="d-flex justify-content-center gap-4 fs-3">
-                    <a href="https://linkedin.com/in/iswan45" target="_blank" class="text-subtle hover-text-primary" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/iswan45" target="_blank" class="text-subtle hover-text-primary" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://instagram.com/iswan45" target="_blank" class="text-subtle hover-text-primary" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/iswan45" data-link="linkedin_url" target="_blank" rel="noopener" class="text-subtle hover-text-primary" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/iswan45" data-link="github_url" target="_blank" rel="noopener" class="text-subtle hover-text-primary" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com/iswan45" data-link="instagram_url" target="_blank" rel="noopener" class="text-subtle hover-text-primary" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -841,7 +841,7 @@
     <!-- FOOTER -->
     <footer class="py-4 border-top border-secondary border-opacity-25 text-center text-subtle small">
         <div class="container">
-            <p class="mb-0">&copy; <span id="yr">2026</span> Iswan Achlan Setiawan. Built for GitHub Pages.</p>
+            <p class="mb-0">&copy; <span id="yr">2026</span> <span data-text="footer_text">Iswan Achlan Setiawan. Built for GitHub Pages.</span></p>
         </div>
     </footer>
 

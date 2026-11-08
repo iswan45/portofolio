@@ -124,6 +124,7 @@
   // ---------- section definitions ----------
   var ICON_HELP = 'Class ikon Font Awesome, misalnya <code>fa-solid fa-chart-pie text-primary</code>. Cari ikon di <a href="https://fontawesome.com/search?o=r&m=free" target="_blank" rel="noopener">fontawesome.com</a>.';
   var SECTIONS = [
+    { key: 'site_text', label: 'Site Text (judul & label)', icon: 'fa-solid fa-font' },
     { key: 'about', label: 'About Me', icon: 'fa-solid fa-user' },
     { key: 'focus_items', label: 'What I Focus On', icon: 'fa-solid fa-bullseye', single: 'Focus',
       title: function (r) { return r.title; }, sub: function (r) { return r.description; }, iconOf: function (r) { return r.icon; },
@@ -174,7 +175,31 @@
       ] }
   ];
   var byKey = {}; SECTIONS.forEach(function (s) { byKey[s.key] = s; });
-  var current = 'about', rows = [], editing = null, pendingImage = null;
+  var SITE_TEXT = [
+    { group: 'Umum', items: [
+      ['page_title', 'Judul tab browser'], ['brand_name', 'Nama di menu atas (kiri)'], ['footer_text', 'Teks footer (tahun otomatis di depannya)']] },
+    { group: 'Menu navigasi', items: [
+      ['nav_home', 'Home'], ['nav_about', 'About'], ['nav_projects', 'Projects'], ['nav_skills', 'Skills'],
+      ['nav_experience', 'Experience & Education'], ['nav_publications', 'Publications'], ['nav_contact', 'Contact']] },
+    { group: 'Halaman depan (Hero)', items: [
+      ['hero_badge', 'Badge di atas nama'], ['hero_greeting', 'Sapaan sebelum nama'], ['hero_name', 'Nama (berwarna gradasi)'],
+      ['hero_title', 'Subjudul / jabatan'], ['hero_intro', 'Kalimat pengantar', 'textarea'],
+      ['hero_chips', 'Chip di bawah pengantar', 'chips'],
+      ['hero_btn_projects', 'Tombol ke Projects'], ['hero_btn_contact', 'Tombol ke Contact']] },
+    { group: 'Judul bagian', items: [
+      ['about_title', 'About Me'], ['focus_title', 'What I Focus On'],
+      ['projects_title', 'Featured Projects'], ['projects_subtitle', 'Subjudul Projects', 'textarea'],
+      ['skills_title', 'Technical Skills'], ['experience_title', 'Experience & Education'],
+      ['work_title', 'Work History'], ['education_title', 'Education'],
+      ['publications_title', 'Publications & Recognitions'], ['pubs_subtitle', 'Kolom publikasi'], ['recognitions_subtitle', 'Kolom sertifikasi']] },
+    { group: 'Projects (filter, tombol, studi kasus)', items: [
+      ['filter_all', 'Filter: All'], ['filter_data_product', 'Filter: Data Products'], ['filter_analysis', 'Filter: Research & Stats'], ['filter_governance', 'Filter: Governance'],
+      ['project_button', 'Tombol di kartu proyek'], ['modal_problem', 'Label: The Problem'], ['modal_what', 'Label: What I Did'], ['modal_stack', 'Label: Tech Stack']] },
+    { group: 'Contact & media sosial', items: [
+      ['contact_title', 'Judul Contact'], ['contact_text', 'Teks Contact', 'textarea'], ['contact_email', 'Email', 'email'],
+      ['linkedin_url', 'Link LinkedIn (kosongkan untuk menyembunyikan)', 'url'], ['github_url', 'Link GitHub', 'url'], ['instagram_url', 'Link Instagram', 'url']] }
+  ];
+  var current = 'site_text', rows = [], editing = null, pendingImage = null;
 
   // ---------- helpers ----------
   function toast(msg, err) {
@@ -222,7 +247,53 @@
     current = a.dataset.sec; buildNav(); open(current);
   });
 
-  function open(key) { key === 'about' ? openAbout() : openList(key); }
+  function open(key) { key === 'about' ? openAbout() : key === 'site_text' ? openSiteText() : openList(key); }
+
+  // ---------- Site Text ----------
+  function openSiteText() {
+    busy(true);
+    db.from('site_text').select('key,value').then(function (r) {
+      busy(false);
+      if (r.error) { $('panel').innerHTML = '<p class="text-danger">' + esc(friendly(r.error)) + '</p>'; return; }
+      var map = {}; (r.data || []).forEach(function (x) { map[x.key] = x.value; });
+      var html = '<div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2"><div><h2 class="h5 fw-bold mb-0">Site Text</h2>' +
+        '<small class="muted">Semua judul, label, dan teks tetap di website. Tulis <code>**teks**</code> untuk huruf tebal.</small></div>' +
+        '<button class="btn btn-acc" id="saveSite"><i class="fa-solid fa-floppy-disk me-2"></i>Simpan semua</button></div>';
+      SITE_TEXT.forEach(function (g) {
+        html += '<h3 class="h6 fw-bold text-info mt-4 mb-3">' + g.group + '</h3><div class="row g-3">';
+        g.items.forEach(function (it) {
+          var k = it[0], type = it[2] || 'text', v = map[k] == null ? '' : map[k], id = 'st_' + k;
+          var wide = type === 'textarea' || type === 'chips';
+          html += '<div class="' + (wide ? 'col-12' : 'col-md-6') + '"><label class="form-label small" for="' + id + '">' + it[1] + '</label>';
+          if (wide) html += '<textarea class="form-control" id="' + id + '" data-key="' + k + '" rows="' + (type === 'chips' ? 5 : 2) + '">' + esc(v) + '</textarea>';
+          else html += '<input class="form-control" type="' + (type === 'email' ? 'email' : type === 'url' ? 'url' : 'text') + '" id="' + id + '" data-key="' + k + '" value="' + esc(v) + '">';
+          if (type === 'chips') html += '<div class="form-text">Satu chip per baris, format <code>ikon | teks</code>, misalnya <code>fa-brands fa-python text-primary | Python</code>. Ikon boleh dikosongkan. ' + ICON_HELP + '</div>';
+          html += '</div>';
+        });
+        html += '</div>';
+      });
+      html += '<div class="d-flex justify-content-end mt-4"><button class="btn btn-acc" id="saveSite2"><i class="fa-solid fa-floppy-disk me-2"></i>Simpan semua</button></div>';
+      $('panel').innerHTML = html;
+      function save() {
+        var payload = [], bad = [];
+        $('panel').querySelectorAll('[data-key]').forEach(function (el) {
+          var v = el.value.trim(), k = el.getAttribute('data-key');
+          if (/_url$/.test(k) && v && !/^https?:\/\//i.test(v)) bad.push(k);
+          if (v !== (map[k] == null ? '' : map[k])) payload.push({ key: k, value: v, updated_at: new Date().toISOString() });
+        });
+        if (bad.length) return toast('Link harus diawali http:// atau https://', true);
+        if (!payload.length) return toast('Tidak ada perubahan.');
+        busy(true);
+        db.from('site_text').upsert(payload).select('key').then(function (res) {
+          busy(false);
+          if (res.error || !res.data || res.data.length !== payload.length) return toast(friendly(res.error || 'Tidak tersimpan. Akun ini tidak punya izin.'), true);
+          payload.forEach(function (p) { map[p.key] = p.value; });
+          toast(payload.length + ' teks tersimpan.');
+        });
+      }
+      $('saveSite').addEventListener('click', save); $('saveSite2').addEventListener('click', save);
+    });
+  }
 
   // ---------- About ----------
   function openAbout() {
